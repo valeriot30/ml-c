@@ -6,10 +6,18 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 #include "../dataset/dataset.h"
 #include "../algorithms/gd.h"
 
-float linear_regression(struct Data* data);
+struct LModel {
+	float *parameters;
+};
+
+struct LModel* linear_regression(struct Data* data);
+
+float predict(struct LModel* model, float x);
 
 #endif

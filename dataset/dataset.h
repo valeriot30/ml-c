@@ -20,5 +20,6 @@ struct Data* create_from_file(char* filename);
 int* get_labels(struct Data* data);
 int** get_features(struct Data* data);
 int get_samples(struct Data* data);
+void print_dataset(struct Data* data);
 
 #endif

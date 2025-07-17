@@ -91,3 +91,16 @@ struct Data* create_from_file(char* filename) {
     fclose(fptr);
     return data;
 }
+
+void print_dataset(struct Data* data) {
+    int row, column;
+
+    for (row=0; row<data->samples; row++)
+    {
+        for(column=0; column < data->features_count; column++)
+        {
+             printf("%d %d", data->features[row][column], data->labels[row]);
+        }
+        printf("\n");
+    }
+}
