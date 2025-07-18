@@ -7,6 +7,8 @@
 #include <math.h>
 #include <time.h>
 
+#include "../functions/loss.h"
+
 #define EPSILON 1e-3
 
 #define EPOCHS 3000

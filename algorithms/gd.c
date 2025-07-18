@@ -1,38 +1,5 @@
 #include "gd.h"
 
-static float mse(int real_y, int predicted_y) {
-	return 1 << ((2 * (real_y - predicted_y)));
-}
-
-static float get_mse_partial_derivative(float* parameters, int** features, int y[], bool bias, int samples)
-{
-	float sum = 0;
-	if(bias){
-		for(int i = 0; i < samples; i++) {
-			sum += (parameters[0] + parameters[1] * features[i][0] - y[i]);
-		}
-	}
-	else {
-		for(int i = 0; i < samples; i++) {
-			sum += (parameters[0] + parameters[1] * features[i][0] - y[i]) * features[i][0];
-		}
-	}
-
-	return (2.0f /(samples))*sum;
-}
-
-float cost(float theta_0, float theta_1, int** features, int y[], int samples) {
-
-	float sum = 0;
-
-	for(int i = 0; i < samples; i++) {
-		sum += pow((theta_0 + theta_1 * features[i][0] - y[i]), 2);
-	}
-
-	return sum / samples;
-}
-
-
 // size is the dimension of the features
 float* gd(int** features, int real_y[], float learning_rate, int size, int samples) {
 

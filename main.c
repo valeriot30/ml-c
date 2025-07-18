@@ -7,8 +7,10 @@ int main() {
 
 	struct LModel *model = linear_regression(data);	
 
-	float predicted_y = predict(model, 2);
+	float x = 2.0;
 
-	printf("Predicted y is %f\n", predicted_y);
+	float predicted_y = predict(model, x);
+
+	printf("Predicted y for x = %f is %f\n", x, predicted_y);
 	
 }
