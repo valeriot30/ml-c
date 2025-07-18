@@ -6,6 +6,11 @@
 #include <stdlib.h>
 #include <math.h>
 
+typedef enum {
+	MSE,
+	LOG
+} loss_type_t;
+
 float get_mse_partial_derivative(float* parameters, int** features, int y[], bool bias, int num_samples);
 
 float mse(float theta_0, float theta_1, int** features, int y[], int samples);

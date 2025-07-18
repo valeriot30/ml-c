@@ -1,7 +1,7 @@
 #include "gd.h"
 
 // size is the dimension of the features
-float* gd(int** features, int real_y[], float learning_rate, int size, int samples) {
+float* gd(int** features, int real_y[], float learning_rate, int size, int samples, loss_type_t loss_type){
 
 	srand(time(NULL));
 
@@ -27,7 +27,10 @@ float* gd(int** features, int real_y[], float learning_rate, int size, int sampl
 			// todo this can be parallelized
 			for(int i = 0; i < (size + 1); i++) {
 				// this update must be atomic
-				update[i] = parameters[i] - learning_rate * get_mse_partial_derivative(parameters, features, real_y, ((i == 0) ? true : false), samples);
+				if(loss_type == MSE)
+					update[i] = parameters[i] - learning_rate * get_mse_partial_derivative(parameters, features, real_y, ((i == 0) ? true : false), samples);
+				else
+					update[i] = parameters[i] - learning_rate * get_logistic_partial_derivative(parameters, features, real_y, ((i == 0) ? true : false), samples);
 			}
 
 			for(int i = 0; i < (size + 1); i++) {

@@ -25,7 +25,7 @@ struct Data* create_from_file(char* filename) {
 
     struct Data* data = malloc(sizeof(struct Data));
     if (data == NULL) {
-        fprintf(stderr, "Memory allocation for Data failed\n");
+        fprintf(stderr, "Memory allocation for data failed\n");
         fclose(fptr);
         return NULL;
     }

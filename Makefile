@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -lm -Wall -Wextra -g
-OBJ = regression/regression.o dataset/dataset.o algorithms/gd.o functions/loss.o main.o
+OBJ = regression/regression.o dataset/dataset.o algorithms/gd.o functions/logistic.o functions/loss.o classification/classification.o main.o
 
 main: $(OBJ)
 	$(CC) $(CFLAGS) -o main $(OBJ)
