@@ -1,0 +1,1 @@
+I have tried to implement a set of machine learning algorithms in pure C following the things i learned during the "Artificial Intelligence" course and by my personal knowledge.
