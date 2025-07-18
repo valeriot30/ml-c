@@ -9,16 +9,16 @@ static float get_mse_partial_derivative(float* parameters, int** features, int y
 	float sum = 0;
 	if(bias){
 		for(int i = 0; i < samples; i++) {
-			sum += pow((parameters[0] + parameters[1] * features[i][0] - y[i]), 2);
+			sum += (parameters[0] + parameters[1] * features[i][0] - y[i]);
 		}
 	}
 	else {
 		for(int i = 0; i < samples; i++) {
-			sum += pow((parameters[0] + parameters[1] * features[i][0] - y[i]) * features[i][0], 2);
+			sum += (parameters[0] + parameters[1] * features[i][0] - y[i]) * features[i][0];
 		}
 	}
 
-	return (2/(samples))*sum;
+	return (2.0f /(samples))*sum;
 }
 
 float cost(float theta_0, float theta_1, int** features, int y[], int samples) {
@@ -26,7 +26,7 @@ float cost(float theta_0, float theta_1, int** features, int y[], int samples) {
 	float sum = 0;
 
 	for(int i = 0; i < samples; i++) {
-		sum += (theta_0 + theta_1 * features[i][0] - y[i]);
+		sum += pow((theta_0 + theta_1 * features[i][0] - y[i]), 2);
 	}
 
 	return sum / samples;
@@ -38,7 +38,7 @@ float* gd(int** features, int real_y[], float learning_rate, int size, int sampl
 
 	srand(time(NULL));
 
-	float parameters[size + 1];
+	float *parameters = malloc(sizeof(float) * (size + 1));
 
 	for(int i = 0; i < (size + 1); i++) {
 		// select a random point in the space
