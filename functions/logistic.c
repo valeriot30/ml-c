@@ -6,14 +6,14 @@ float get_logistic_partial_derivative(float* parameters, int** features, int y[]
 
 
 	for(int i = 0; i < num_samples; i++) {
-		sum += (y[i] - SIGMOID(parameters[0] + parameters[1] * features[i][0])) * (bias == true ? 1 : features[i][0]);
+		sum += (SIGMOID(parameters[0] + parameters[1] * features[i][0]) - y[i]) * (bias == true ? 1 : features[i][0]);
 	}
 
-	return (-1 / num_samples) * sum;
+	return (1 / num_samples) * sum;
 
 }
 
-float log_logistic(float* parameters, int** features, int y[], bool bias, int num_samples) {
+float log_logistic(float* parameters, int** features, int y[], int num_samples) {
 
 	float sum = 0;
 

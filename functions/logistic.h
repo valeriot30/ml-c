@@ -12,6 +12,6 @@
 
 float get_logistic_partial_derivative(float* parameters, int** features, int y[], bool bias, int num_samples);
 
-float log_logistic(float* parameters, int** features, int y[], bool bias, int num_samples);
+float log_logistic(float* parameters, int** features, int y[], int num_samples);
 
 #endif
